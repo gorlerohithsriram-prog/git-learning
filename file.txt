@@ -1,2 +1,10 @@
-line 1
-line 2
+HELLO 
+#include<linux/bpf.h>
+#include<bpf/bpf_helpers.h>
+
+SEC("xdp")
+int firewall(struct xdp_md *ctx)
+{
+	bpf_printk("hello from firewall")
+	return XDP_PASS;
+}
